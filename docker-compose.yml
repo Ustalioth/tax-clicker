@@ -1,0 +1,11 @@
+services:
+  taxe-clicker:
+    build: .
+    container_name: taxe-clicker
+    restart: unless-stopped
+    environment:
+      CODE: "GOBE-3SGD-YPNY-RM5K-VYR5"
+      INTERVALLE: "0.1"
+    volumes:
+      - ./data:/data
+    shm_size: "1gb"   # Chromium plante souvent avec le /dev/shm de 64 Mo par défaut
