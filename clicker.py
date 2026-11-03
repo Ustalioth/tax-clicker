@@ -30,8 +30,17 @@ def run():
         page.add_style_tag(content="#zenTip { display: none !important; }")
         print("C'est parti !", flush=True)
 
+        # Le jeu détecte l'autoclick et demande de choisir : on prend l'option
+        # « continuer » prévue par le jeu (jeu hors classement, pas de triche cachée).
+        ac = page.locator("#acOv.on")
+        cheat = page.locator("#acCheat")
+
         n = 0
         while True:
+            if ac.count() > 0:
+                print("Autoclick détecté : je continue hors classement", flush=True)
+                cheat.click(timeout=10_000)
+                page.wait_for_timeout(600)  # laisse l'animation de fermeture finir
             btn.click(timeout=10_000)
             n += 1
             if n % 1000 == 0:
