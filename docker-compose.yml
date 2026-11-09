@@ -6,6 +6,7 @@ services:
     environment:
       CODE: "GOBE-3SGD-YPNY-RM5K-VYR5"
       INTERVALLE: "0.1"
+      TZ: "Europe/Paris"   # minuit et heures des logs en heure locale
     volumes:
       - ./data:/data
     shm_size: "1gb"   # Chromium plante souvent avec le /dev/shm de 64 Mo par défaut
